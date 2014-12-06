@@ -1,11 +1,6 @@
 package view;
 
-/*
- * 
- * 	the main game function
- * 
- * 
- * */
+
 
 public class test3 {
 
