@@ -12,7 +12,10 @@ public class test2 {
 		Deck cards = new Deck();
 		Card temp;
 		
-	
+		
+		//cards.returnCard(5).toString();
+		
+		
 		cards.shuffle();
 		
 		

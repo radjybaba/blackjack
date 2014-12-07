@@ -2,8 +2,8 @@ package model;
 
 public class Deck {
 	
-	private Card[] deck;
-	private int cardsUsed;
+	private static Card[] deck;
+	private static int cardsUsed;
 	
 
 	public Deck() {
@@ -14,13 +14,14 @@ public class Deck {
 			for(int j = 1; j<14 ; j++){
 				deck[cards] = new Card(j,i);
 				cards++;
+				
 			}
 		}
 		cardsUsed = 0;
 
 	}
 	
-	public void shuffle() {
+	public static void shuffle() {
         // Put all the used cards back into the deck, and shuffle it into
         // a random order.
       for ( int i = 51; i > 0; i-- ) {
@@ -52,9 +53,11 @@ public class Deck {
 		  
 	  }
 	  
-	  public Card returnCard(int i){
+	  public static Card returnCard(int i){
 		  return deck[i];
 	  }
+	  
+	  
 	
 
 
