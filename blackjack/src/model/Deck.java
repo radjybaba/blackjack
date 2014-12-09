@@ -4,9 +4,11 @@ public class Deck {
 	
 	private static Card[] deck;
 	private static int cardsUsed;
+	private static Deck instance = null;
+	private static int counter = 0;
 	
 
-	public Deck() {
+	protected Deck() {
 		// TODO Auto-generated constructor stub
 		deck = new Card[52];
 		int cards = 0;
@@ -29,6 +31,20 @@ public class Deck {
 		
 		cardsUsed = 0;
 		
+	}
+	
+	public static Deck getInstance(){
+		if(instance == null){
+			System.out.println("Yes");
+		}else{
+			
+			System.out.println("No   " + counter++ );
+		}
+		
+		if(instance == null){	
+			instance = new Deck();
+		}
+		return instance;
 	}
 /*	
 	public static void setRealValue(){

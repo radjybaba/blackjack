@@ -1,7 +1,7 @@
 package view;
 
 import model.Card;
-import model.Deck;
+
 import controller.ControllerLogic;
 
 public class ViewLogic {
@@ -12,16 +12,18 @@ public class ViewLogic {
      *
      * @return
      */
-        public static void getDeck(){
+        
+		@SuppressWarnings("static-access")
+		public static void getDeck(){
 
-                if(controller == null){
+           //     if(controller == null){
          //           System.out.println("controller is null");
                     controller = new ControllerLogic();
-                    controller.getDeck().shuffle();
-                }else{
+                    controller.getShuffled();
+     //           }else{
           //          System.out.println("controller is NOT null");
-                    controller.getDeck().shuffle();
-                }
+    //                controller.getDeck().shuffle();
+   //             }
 
         }
   /*      
@@ -33,13 +35,15 @@ public class ViewLogic {
 
 	
 	
+	
 	public static String getImg(int i){
 		
 		
          //  controller.getDeck();
 		//     controller = new ControllerLogic();
           //      controller.getDeck().shuffle();
-		Card c = controller.getDeck().returnCard(i);
+		@SuppressWarnings("static-access")
+		Card c = controller.getCard(i);
 		String s = c.toString();
                 
                 s = s.toLowerCase();

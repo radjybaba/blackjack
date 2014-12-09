@@ -10,7 +10,8 @@ public class test2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Deck cards = new Deck();
+		Deck cards = null;
+		cards = cards.getInstance();
 		Card temp;
 		
 		

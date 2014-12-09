@@ -1,5 +1,6 @@
 package controller;
 
+import model.Card;
 import model.Deck;
 import model.ModelLogic;
 
@@ -12,9 +13,20 @@ public class ControllerLogic {
 		model = new ModelLogic();
 	}
 	
+	@SuppressWarnings("static-access")
 	public static Deck getDeck(){
 		return model.getDeck();
 	}
+	
+	@SuppressWarnings("static-access")
+	public static void getShuffled(){
+    	model.getShuffled();    	
+    }
+	
+    @SuppressWarnings("static-access")
+	public static Card getCard(int i){
+    	return model.getCard(i);
+    }
         
         /*
         

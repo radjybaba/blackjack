@@ -39,6 +39,7 @@ public class Table extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,6 +76,12 @@ public class Table extends javax.swing.JFrame {
         jLabel5.setText("Card 4");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(650, 170, 60, 87);
+
+        jButton2.setText("jButton2");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        getContentPane().add(jButton2);
+        jButton2.setBounds(980, 530, 73, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/background.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -141,6 +148,7 @@ public class Table extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
