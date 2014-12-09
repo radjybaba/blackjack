@@ -12,14 +12,37 @@ public class Deck {
 		int cards = 0;
 		for(int i =0 ; i<4 ; i++){
 			for(int j = 1; j<14 ; j++){
-				deck[cards] = new Card(j,i);
+				deck[cards] = new Card(j,i,j);
 				cards++;
 				
 			}
 		}
+		
+		for(int i=0 ; i<52 ; i++){
+			int temp =  deck[i].getValueD();
+			if(temp == 1){
+				deck[i].setValueD(11);
+			}else if (temp ==11 || temp==12 || temp == 13){
+				deck[i].setValueD(10);
+			}
+		}
+		
 		cardsUsed = 0;
-
+		
 	}
+/*	
+	public static void setRealValue(){
+			for(int i=0 ; i<52 ; i++){
+				int temp =  deck[i].getValueD();
+				if(temp == 1){
+					deck[i].setValueD(11);
+				}else if (temp ==11 || temp==12 || temp == 13){
+					deck[i].setValueD(10);
+				}
+			}
+		
+	}
+	*/
 	
 	public static void shuffle() {
         // Put all the used cards back into the deck, and shuffle it into
@@ -58,7 +81,10 @@ public class Deck {
 	  }
 	  
 	  
-	
+	  
+
 
 
 }
+
+

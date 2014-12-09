@@ -15,8 +15,17 @@ public class ControllerLogic {
 	public static Deck getDeck(){
 		return model.getDeck();
 	}
+        
+        /*
+        
+        public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
 
-	
+	}
+
+	*/
 
 	
 

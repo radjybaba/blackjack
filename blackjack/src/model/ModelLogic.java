@@ -16,7 +16,7 @@ public class ModelLogic {
 
 	public ModelLogic() {
 		// TODO Auto-generated constructor stub
-		cards= new Deck();
+		cards = new Deck();
 	}
 
 	

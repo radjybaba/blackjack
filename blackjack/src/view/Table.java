@@ -5,17 +5,24 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
+
+
 /**
  *
  * @author Geryes
  */
-public class test4 extends javax.swing.JFrame {
+public class Table extends javax.swing.JFrame {
 
     /**
-     * Creates new form test4
+     * Creates new form Table
      */
-    public test4() {
+    static ViewLogic view;
+    
+    public Table(ViewLogic v) {
         initComponents();
+        view = v;
     }
 
     /**
@@ -28,58 +35,74 @@ public class test4 extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jButton1.setText("New Game");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
+        jButton1.setForeground(new java.awt.Color(240, 240, 240));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/buttons/new_game_button.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(430, 150, 130, 60);
+        jButton1.setBounds(1050, 630, 211, 44);
 
-        jButton2.setText("Shuffle");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(720, 150, 130, 60);
+        jLabel2.setText("Card 1");
+        jLabel2.setName(""); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(580, 350, 60, 87);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/5509_Blackjack-at-888casino.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setPreferredSize(new java.awt.Dimension(1280, 720));
+        jLabel3.setText("Card 2");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(650, 350, 60, 87);
+
+        jLabel4.setText("Card 3");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(580, 170, 60, 87);
+
+        jLabel5.setText("Card 4");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(650, 170, 60, 87);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/background.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1290, 730);
+        jLabel1.setBounds(0, 0, 1280, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        view.getDeck();
+        
+        String str =  view.getImg(51);
+        String str1 = view.getImg(50);
+        String str2 = view.getImg(49);
+        String str3 = "cardsback.jpg";
+        
+         ImageIcon cardIcon1 = new ImageIcon(getClass().getResource(str));
+         ImageIcon cardIcon2 = new ImageIcon(getClass().getResource(str1));
+         ImageIcon cardIcon3 = new ImageIcon(getClass().getResource(str2));
+         ImageIcon cardIcon4 = new ImageIcon(getClass().getResource(str3));
+         
+         jLabel2.setIcon(cardIcon1);
+         jLabel3.setIcon(cardIcon2);
+         jLabel4.setIcon(cardIcon3);
+         jLabel5.setIcon(cardIcon4);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -98,27 +121,30 @@ public class test4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(test4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(test4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(test4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(test4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new test4().setVisible(true);
+                new Table(view).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
