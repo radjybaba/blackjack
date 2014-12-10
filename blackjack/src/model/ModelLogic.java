@@ -3,31 +3,38 @@ package model;
 public class ModelLogic {
 	
 	
-	private static Deck cards;
-	//private static Card card;
+    private static Deck cards;
 	
-    /**
-     *
-     * @return
-     */
-    public static Deck getDeck(){
+    /* 
+	 * returns the Deck that got created 
+	 */
+    
+    public Deck getDeck(){
 		
 		return cards;
 	}
     
-    @SuppressWarnings("static-access")
-	public static void getShuffled(){
+    
+    /*
+     * Shuffles the deck
+     */
+    
+	public void getShuffled(){
     	cards.shuffle();    	
     }
     
-    @SuppressWarnings("static-access")
-	public static Card getCard(int i){
+	
+	/*
+	 * returns the card of position i of the deck
+	 */
+	
+	public Card getCard(int i){
     	return cards.returnCard(i);
     }
 
 	public ModelLogic() {
 		// TODO Auto-generated constructor stub
-		cards = Deck.getInstance();   // cards.getInstance();
+		cards = Deck.getInstance(); 
 	}
 
 	

@@ -3,29 +3,62 @@ package controller;
 import model.Card;
 import model.Deck;
 import model.ModelLogic;
+import view.ViewLogic;
 
 public class ControllerLogic {
 	
 	private static ModelLogic model;
+    private static ViewLogic view;
+    private static ControllerLogic instance;
+    private static boolean exists = false;
 	
-	public ControllerLogic() {
+    /**
+     *
+     */
+    public ControllerLogic() {
 		// TODO Auto-generated constructor stub
-		model = new ModelLogic();
+
 	}
+    
+    /* 
+     * Creates an instance of the ControllerLogic along with  a model and an instance of the view 
+     */
+    
+    public static ControllerLogic getInstance(){
+    	if(!exists){
+    		exists = true;
+            model = new ModelLogic();
+            instance = new ControllerLogic();
+            view = ViewLogic.getInstance(instance);
+            view.exceuteGame();
+            }
+    	return instance;
+    }
+    
 	
-	@SuppressWarnings("static-access")
-	public static Deck getDeck(){
+
+	/* 
+	 * returns the Deck that got created 
+	 */
+    
+    public Deck getDeck(){
 		return model.getDeck();
 	}
 	
-	@SuppressWarnings("static-access")
-	public static void getShuffled(){
-    	model.getShuffled();    	
+    /*
+     * Shuffles the deck
+     */
+    
+	public void getShuffled(){
+		model.getShuffled();    	
     }
 	
-    @SuppressWarnings("static-access")
-	public static Card getCard(int i){
-    	return model.getCard(i);
+	/*
+	 * returns the card of position i of the deck
+	 */
+	
+	public Card getCard(int i){
+        return model.getCard(i);
     }
         
         /*
