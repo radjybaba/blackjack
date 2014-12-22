@@ -1,11 +1,24 @@
 /*
+ * 
+ * 	Nadine Smair		308573252			Anton Anton		203323902
+ *	Ameer Dow			203844956			Geryes Moussa 	301622635
+ *
+ *
+ */
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package view;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 
@@ -24,9 +37,34 @@ public class Table extends javax.swing.JFrame {
      */
     static ViewLogic view;
     
+    private final ArrayList<JLabel> playerHand;
+    private final ArrayList<JLabel> dealerHand;
+    
+    private int playerCards;
+    private int dealerCards;
+    
+    private JLabel back;
+    
+    
     public Table(ViewLogic v) {
         initComponents();
+        add(jLabel1);
         view = v;
+        playerCards = 0;
+        dealerCards = 0;
+        playerHand = new ArrayList<>();
+        dealerHand = new ArrayList<>();
+        jButton2.setEnabled(false);
+        jButton2.setVisible(false);
+        
+        jButton3.setEnabled(false);
+        jButton3.setVisible(false);
+             try {
+                view.shuffleSound();
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        this.repaint();
     }
 
     /**
@@ -38,11 +76,9 @@ public class Table extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,6 +86,17 @@ public class Table extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/buttons/hit_button.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(990, 520, 80, 90);
 
         jButton1.setForeground(new java.awt.Color(240, 240, 240));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/buttons/new_game_button.png"))); // NOI18N
@@ -63,22 +110,16 @@ public class Table extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(1050, 630, 211, 44);
 
-        jLabel2.setText("Card 1");
-        jLabel2.setName(""); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(580, 350, 60, 87);
-
-        jLabel3.setText("Card 2");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(650, 350, 60, 87);
-
-        jLabel4.setText("Card 3");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(580, 170, 60, 87);
-
-        jLabel5.setText("Card 4");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(650, 170, 60, 87);
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/buttons/stand_button.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(1090, 470, 80, 90);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/background.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -88,9 +129,61 @@ public class Table extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        view.getShuflled();
         
+       jLabel1.removeAll();
+    //   System.err.println("dealer score at start is: " + view.getDealerCurrentScore() + " player score at start is:" + view.getPlayerCurrentScore());
+       view.newRound();
+       playerHand.clear();
+       dealerHand.clear();
+       playerCards = 0;
+       dealerCards = 0;
+   //    add(jLabel1);
+       jButton2.setEnabled(false);
+       jButton2.setVisible(false);
+       
+       jButton3.setEnabled(false);
+       jButton3.setVisible(false);
+       this.repaint();
+       
+                 try {
+                view.cardSound(3);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       
+       updateHand("player" , ++playerCards);
+       updateHand("player" , ++playerCards);
+       updateHand("dealer" , ++dealerCards);
+       updateHand("dealer" , ++dealerCards);
+       
+  //     System.err.println("dealer score after 2 cards is: " + view.getDealerCurrentScore() + " player score after 2 cards  is:" + view.getPlayerCurrentScore());
+       // 2nd card is hidden for the dealer
+       back = new JLabel();
+       JLabel temp = dealerHand.get(1);
+       Rectangle r = temp.getBounds();
+       String path = "cardsback.png";
+       ImageIcon cardIcon = new ImageIcon(getClass().getResource(path));
+       
+       back.setBounds(r);
+       back.setIcon(cardIcon);
+       temp.add(back);
+       temp.setVisible(false);
+       back.setVisible(true);
+       jLabel1.add(back);
+       this.repaint();
+       
+       jButton1.setEnabled(false);
+       jButton1.setVisible(false);
+       jButton2.setVisible(true);
+       jButton3.setVisible(true);
+       jButton2.setEnabled(true);
+       jButton3.setEnabled(true);
+       
+       
+       
+
+     //   view.getShuflled();
+    /*    
         String str =  view.getImg(51);
         String str1 = view.getImg(50);
         String str2 = view.getImg(49);
@@ -105,9 +198,107 @@ public class Table extends javax.swing.JFrame {
          jLabel3.setIcon(cardIcon2);
          jLabel4.setIcon(cardIcon3);
          jLabel5.setIcon(cardIcon4);
+        */
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jButton3.setEnabled(false);
+        jButton3.setVisible(false);
+        jButton2.setVisible(false);
+          
+        JLabel temp = dealerHand.get(1);
+        back.setVisible(false);
+        temp.setVisible(true);
+        while(view.getDealerCurrentScore() < 17){
+     //       System.err.println("was in the loop " + (dealerCards - 2) + " times *** dealer score before getting new cards is "+ view.getDealerCurrentScore() );
+            view.stand();
+    //        System.err.println("dealer score after "+ (dealerCards+1)+" cards is: " + view.getDealerCurrentScore());
+            updateHand("dealer" , ++dealerCards);
+        }
+        try {
+                view.cardSound(dealerCards - 2);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  //      System.err.println("Dealer got a score of 17 or more");
+   //     jButton2.setEnabled(false);
+        
+        this.repaint();
+        jButton2.setVisible(false);
+        jButton1.setVisible(true);
+        jButton1.setEnabled(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            try {
+                view.cardSound(0);
+            } catch (LineUnavailableException ex) {
+                Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        view.hit();
+        updateHand("player" , ++playerCards);
+     //   System.err.println("player score after "+ playerCards+" cards is: " + view.getPlayerCurrentScore());
+        this.repaint();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    
+    public void updateHand(String hand, int i){
+        int j = i - 1;
+        String path;
+   //     System.out.println("updateHand: u r here: "+ i);
+        JLabel temp = new JLabel();
+        if(hand.contentEquals("player")){
+            playerHand.add(temp);
+            path = view.getImgPath(view.getPlayerHand(), j);
+        //    System.out.println("player path: "+ path);
+            ImageIcon cardIcon = new ImageIcon(getClass().getResource(path));
+            temp.setIcon(cardIcon);
+            fixCords(hand , i);
+            temp.setVisible(true);
+            jLabel1.add(temp);
+            this.repaint();
+        }else{
+            dealerHand.add(temp);
+            path = view.getImgPath(view.getDealerHand(), j);
+      //      System.out.println("dealer path: "+ path);
+            ImageIcon cardIcon = new ImageIcon(getClass().getResource(path));
+            temp.setIcon(cardIcon);
+            fixCords(hand , i);
+            temp.setVisible(true);
+            jLabel1.add(temp);
+            this.repaint();
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+    public void fixCords(String hand , int i){
+        if(hand.contentEquals("player")){
+            for(int j = 0 ; j < i ; j++){
+                JLabel temp = playerHand.get(j);
+                int x = (1280 - i*66)/2 ; //the middle without the cards
+                
+                temp.setBounds(x + 66*j, 340, 60 , 87 );
+                this.repaint();
+        }
+        }else{
+            for(int j = 0 ; j < i ; j++){
+                JLabel temp = dealerHand.get(j);
+                int x = (1280 - i*66)/2;
+                temp.setBounds(x + 66*j, 160, 60 , 87 );
+                this.repaint();
+        }  
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -116,10 +307,8 @@ public class Table extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
