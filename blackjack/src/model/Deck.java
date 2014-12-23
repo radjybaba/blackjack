@@ -1,3 +1,11 @@
+/*
+ * 
+ * 	Nadine Smair		308573252			Anton Anton		203323902
+ *	Ameer Dow			203844956			Geryes Moussa 	301622635
+ *
+ *
+ */
+
 package model;
 
 public class Deck {
@@ -6,7 +14,10 @@ public class Deck {
 	private  int cardsUsed;
 	private static Deck instance = null;
 
-
+	
+	/*
+	 * the Deck constructor
+	 */
 
 	protected Deck() {
 		// TODO Auto-generated constructor stub
@@ -23,18 +34,18 @@ public class Deck {
 	}
 	
 	/*
+	 * a getter for the cardsUsed field in the class
+	 */
+
+	public int getCardsUsed() {
+		return cardsUsed;
+	}
+	
+	/*
 	 * creates an instance of Deck and returns it
 	 */
 
 	public static Deck getInstance(){
-		/*		
-		 if(instance == null){
-			System.out.println("Yes");
-		}else{
-
-			System.out.println("No   " + counter++ );
-		}
-		 */
 		if(instance == null){	
 			instance = new Deck();
 		}
@@ -75,6 +86,16 @@ public class Deck {
 		return this.deck[this.cardsUsed - 1];
 	}
 	
+	
+	/*
+	 * a method to increase the cardsUsed by one
+	 */
+	
+	
+	public void increaseUsed(){
+		this.cardsUsed++;
+	}
+	
 	/*
 	 * returns the toString of the card in position i
 	 */
@@ -90,6 +111,15 @@ public class Deck {
 	
 	public  Card returnCard(int i){
 		return this.deck[i];
+	}
+	
+	/*
+	 * a method that returned the next card in line depending on the cardsUsed in the deck
+	 */
+	
+	public Card getCard(){
+		//this.cardsUsed++;
+		return this.deck[52-(++this.cardsUsed)];
 	}
 
 
