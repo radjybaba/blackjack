@@ -1,3 +1,11 @@
+/*
+ * 
+ * 	Nadine Smair		308573252			Anton Anton		203323902
+ *	Ameer Dow			203844956			Geryes Moussa 	301622635
+ *
+ *
+ */
+
 package model;
 
 
@@ -20,6 +28,7 @@ public class test2 {
 		
 		Deck cards = Deck.getInstance();
 		Card temp;
+		Hand hand = new Hand();
 		
 		
 		//cards.returnCard(5).toString();
@@ -54,6 +63,23 @@ public class test2 {
 			System.out.print("["+ temp.getValueAsInt() +"]" + temp.toString() + ", ");
 		}
 		System.out.println();
+		System.out.println();
+		
+		
+		temp = cards.getCard();
+		hand.setScore(temp.getValueAsInt());
+		hand.getCard(temp);
+		int score = hand.getScore();
+		int aces = hand.getNumOfAces();
+		System.out.println(hand.toString() + ", your score is: " + score + " your number of aces is: " + aces);
+		
+		temp = cards.getCard();
+		hand.setScore(temp.getValueAsInt() + score);
+		hand.getCard(temp);
+		score = hand.getScore();
+		aces = hand.getNumOfAces();
+		System.out.println(hand.toString() + ", your score is: " + score + " your number of aces is: " + aces);
+		
 
 	}
 

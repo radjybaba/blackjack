@@ -1,3 +1,11 @@
+/*
+ * 
+ * 	Nadine Smair		308573252			Anton Anton		203323902
+ *	Ameer Dow			203844956			Geryes Moussa 	301622635
+ *
+ *
+ */
+
 package model;
 
 public class Card {
@@ -85,28 +93,27 @@ public class Card {
 		}
 	}
 	
+	
+	/*
+	 * a check method if the card is an Ace
+	 */
+	public boolean isAce(){
+		return (this.value == 1);
+	}
+	
 	/*
 	 * Return an int representing the card's value.
 	 * If the card's value is invalid, -1 is returned.
 	 */
 
 	public int getValueAsInt() {
-		switch ( value ) {
-		case 1:   return 11;
-		case 2:   return 2;
-		case 3:   return 3;
-		case 4:   return 4;
-		case 5:   return 5;
-		case 6:   return 6;
-		case 7:   return 7;
-		case 8:   return 8;
-		case 9:   return 9;
-		case 10:  return 10;
-		case 11:  return 10;
-		case 12:  return 10;
-		case 13:  return 10;
-		default:  return -1;
-		}
+		
+		if (value == 1){
+			return 11;
+		}else if (value == 10 || value == 11 || value == 12 || value == 13){
+			return 10;
+		}else
+			return value;
 	}
 
 	/*
