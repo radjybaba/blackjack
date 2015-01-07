@@ -80,11 +80,12 @@ public class Table extends javax.swing.JFrame {
 		playerHand = new ArrayList<>();
 		dealerHand = new ArrayList<>();
 		this.time = new Timer(1,null);
-		playerScore.setText( "" );
-		dealerScore.setText( "" );
+		playerScore.setText( "0" );
+		dealerScore.setText( "0" );
 		currWinsText.setText( "0" );
 		currRoundText.setText( "0" );
 		currScoreText.setText( "0" );
+		statusMsg.setText("");
 		this.username = usr;
 		usernameText.setText(usr);
 		buttonsControl(true,false,false);
@@ -285,6 +286,11 @@ public class Table extends javax.swing.JFrame {
 		background.add(usernameText);
 		background.add(animated);
 
+		playerScore.setText( "0" );
+		dealerScore.setText( "0" );
+
+		statusMsg.setText("");
+
 		playerScore.setForeground(Color.yellow);
 		statusMsg.setForeground(Color.yellow);
 		statusMsg.setText("");
@@ -344,10 +350,20 @@ public class Table extends javax.swing.JFrame {
 		winner = view.winnerToString(win);
 		// wining msg
 		//		System.err.println("hasWon inside stand: " + winner + " has Won!");
-		statusMsg();
+		statusMsgPicture();
 		if(winner.equals("Player")){
+			try {
+				view.winningSound();
+			} catch (LineUnavailableException ex) {
+				Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+			}
 			statusMsg.setText("You Won!");
 		}else{
+			try {
+				view.losingSound();
+			} catch (LineUnavailableException ex) {
+				Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+			}
 			statusMsg.setText("You Lost!");
 		}
 
@@ -426,12 +442,13 @@ public class Table extends javax.swing.JFrame {
 		background.add(currRoundText);
 		background.add(currScoreText);
 		background.add(usernameText);
-		playerScore.setText( "" );
-		dealerScore.setText( "" );
+		statusMsg.setText("");
+		playerScore.setText( "0" );
+		dealerScore.setText( "0" );
 
-		currScoreText.setText( "" );
-		currRoundText.setText( "" );
-		currWinsText.setText( "" );
+		currScoreText.setText( "0" );
+		currRoundText.setText( "0" );
+		currWinsText.setText( "0" );
 		view.saveData();
 		repaint();
 		buttonsControl(true, false, false);
@@ -522,7 +539,7 @@ public class Table extends javax.swing.JFrame {
 	 */
 	private void dealerAnimation(){
 		// takes 1200 ms
-		// jLabel1.add(animated);
+
 		JLabel temp = animated;
 		animated.setBounds(930, 40, 60, 87);
 		animated.setVisible(true);
@@ -588,8 +605,13 @@ public class Table extends javax.swing.JFrame {
 						win = Dealer;
 						view.updatePlayersScore(Dealer);
 						view.saveData();
-						statusMsg();
+						statusMsgPicture();
 						statusMsg.setText("Busted!");
+						try {
+							view.losingSound();
+						} catch (LineUnavailableException ex) {
+							Logger.getLogger(Table.class.getName()).log(Level.SEVERE, null, ex);
+						}
 						buttonsControl(true,false,false);
 					}
 
@@ -687,7 +709,7 @@ public class Table extends javax.swing.JFrame {
 	 * building the winning or losing label
 	 */
 
-	private void statusMsg(){
+	private void statusMsgPicture(){
 		JLabel winPic = new JLabel();
 		String path = "animation/win.gif";
 		ImageIcon winIcon = new ImageIcon(getClass().getResource(path));
@@ -695,11 +717,11 @@ public class Table extends javax.swing.JFrame {
 		path = "animation/lose.gif";
 		ImageIcon loseIcon = new ImageIcon(getClass().getResource(path));
 		if(win == Player){
-			winPic.setBounds(0,175,winIcon.getIconWidth() , winIcon.getIconHeight());
+			winPic.setBounds(2,175,winIcon.getIconWidth() , winIcon.getIconHeight());
 			winPic.setIcon(winIcon);
 			background.add(winPic);
 		}else{
-			losePic.setBounds(0,175,loseIcon.getIconWidth() , loseIcon.getIconHeight());
+			losePic.setBounds(2,175,loseIcon.getIconWidth() , loseIcon.getIconHeight());
 			losePic.setIcon(loseIcon);
 			background.add(losePic);
 		}

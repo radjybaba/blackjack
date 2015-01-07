@@ -27,7 +27,7 @@ public class Player {
 		// TODO Auto-generated constructor stub
 		this.hand = new Hand();
 		this.score = 0;
-		this.totalGames = 0; //from the user later
+		this.totalGames = 1; //from the user later
 		this.loss = 0;		//from the user later
 		this.user = usr;
 
@@ -37,7 +37,7 @@ public class Player {
 		// TODO Auto-generated constructor stub
 		this.hand = new Hand();
 		this.score = 0;
-		this.totalGames = 0; //from the user later
+		this.totalGames = 1; //from the user later
 		this.loss = 0;		//from the user later
 
 	}
@@ -47,7 +47,7 @@ public class Player {
 	 */
 
 	public int getWins() {
-		return totalGames - loss;
+		return totalGames - loss - 1;
 	}
 
 	/*

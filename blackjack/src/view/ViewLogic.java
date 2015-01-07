@@ -40,7 +40,7 @@ public class ViewLogic {
 	private static ControllerLogic controller;
 	private static ViewLogic instance;
 	private static boolean exists = false;
-//	private Table table;
+	//	private Table table;
 	private WelcomeScreen welcome;
 
 
@@ -193,6 +193,33 @@ public class ViewLogic {
 	public void shuffleSound() throws LineUnavailableException{
 		try {
 			AudioInputStream audioIn = AudioSystem.getAudioInputStream(ViewLogic.class.getResource("sounds/cardShuffle.wav"));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException | IOException e) {
+		}
+	}
+
+	/*
+	 * the winning sound method
+	 */
+
+	public void winningSound() throws LineUnavailableException{
+		try {
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(ViewLogic.class.getResource("sounds/win.wav"));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioIn);
+			clip.start();
+		} catch (UnsupportedAudioFileException | IOException e) {
+		}
+	}
+	/*
+	 * the losing sound method
+	 */
+
+	public void losingSound() throws LineUnavailableException{
+		try {
+			AudioInputStream audioIn = AudioSystem.getAudioInputStream(ViewLogic.class.getResource("sounds/lose.wav"));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioIn);
 			clip.start();
