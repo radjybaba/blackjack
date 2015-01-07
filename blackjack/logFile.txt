@@ -1,0 +1,21 @@
+Wed Jan 07 18:35:23 IST 2015: Game() constructor
+Wed Jan 07 18:35:23 IST 2015: get an instance of Deck
+Wed Jan 07 18:35:23 IST 2015: Round() constructor, round number: 1
+Wed Jan 07 18:35:26 IST 2015: login successfully as a
+Wed Jan 07 18:35:28 IST 2015: Game() constructor
+Wed Jan 07 18:35:28 IST 2015: get an instance of Deck
+Wed Jan 07 18:35:28 IST 2015: Round() constructor, round number: 1
+Wed Jan 07 18:35:33 IST 2015: Player's total score: 0
+Wed Jan 07 18:35:33 IST 2015: resets player's hand, score is: 0
+Wed Jan 07 18:35:33 IST 2015: resets dealer's hand and shuffles the deack
+Wed Jan 07 18:35:33 IST 2015: Hit player with card: 7 of Hearts, player's current score is: 7
+Wed Jan 07 18:35:33 IST 2015: Hit player with card: 5 of Spades, player's current score is: 12
+Wed Jan 07 18:35:33 IST 2015: Stand dealer gets card: 10 of Clubs, dealer's current score is: 10
+Wed Jan 07 18:35:33 IST 2015: Stand dealer gets card: 2 of Hearts, dealer's current score is: 12
+Wed Jan 07 18:35:33 IST 2015: new round: 2
+Wed Jan 07 18:35:33 IST 2015: player's current round score is: 12
+Wed Jan 07 18:35:37 IST 2015: Stand dealer gets card: 2 of Clubs, dealer's current score is: 14
+Wed Jan 07 18:35:37 IST 2015: Stand dealer gets card: 6 of Diamonds, dealer's current score is: 20
+Wed Jan 07 18:35:37 IST 2015: Player's total rounds in this game: 1 wins: 0 losses: 1
+Serialized data is saved in /users.ser
+Serialized data is saved in /users.ser
