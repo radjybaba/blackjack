@@ -16,10 +16,10 @@ public class Game {
 	
 
 	
-//	private Deck deck;
-//	private User user;	// singleton
+
+	//private User user;	// singleton
 	private Round round; // singleton
-//	private int moreThan = 0;
+
 	
 	
 	
@@ -31,14 +31,16 @@ public class Game {
 		this.round = new Round();
 	//	this.newRound();
 	}
-/*	
-	public Game(User user) {
-		this.user = user;
-		this.deck = Deck.getInstance();
-		this.round = new Round();
-		this.newRound();
+	
+	public Game(User usr){
+		System.out.println(((new Date()).toString())+": Game() constructor");
+		System.out.println(((new Date()).toString())+": get an instance of Deck");
+		Deck.getInstance();
+		this.round = new Round(usr);
+	//	this.user = usr;
+	//	this.newRound();
 	}
-*/	
+	
 	
 	/*
 	 * starts new round

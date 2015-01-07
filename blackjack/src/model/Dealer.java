@@ -14,9 +14,7 @@ public class Dealer {
 	
 	public final int BLACKJACK = 21;
 	
-//	private int wins;
-//	private int loss;
-//	private int totalGames;
+
 	private Hand hand;
 	private int score;
 

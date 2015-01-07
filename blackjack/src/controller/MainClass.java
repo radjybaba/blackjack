@@ -8,12 +8,8 @@
 
 package controller;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 
 
@@ -49,12 +45,11 @@ public class MainClass {
 		try {
 			out = new PrintStream(new FileOutputStream("logFile.txt"));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		System.setOut(out);
          
-		controller = ControllerLogic.getInstance();    
+		controller = ControllerLogic.getInstance();
+		controller.toString();
             
             /*
              * serializable 
@@ -89,7 +84,7 @@ public class MainClass {
             }
             System.err.println(str1.toString());
             */
-            controller.getCard(5);
+            
             
            // System.out.println("dealer score is: " + controller.getDealerCurrentScore() + " player score is: " + controller.getPlayerCurrentScore());
             

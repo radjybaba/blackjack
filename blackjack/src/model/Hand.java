@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class Hand {
 	
 	private ArrayList<Card> cards;
-//	private Card[] cards;
 	private int score;
 
 	public Hand() {

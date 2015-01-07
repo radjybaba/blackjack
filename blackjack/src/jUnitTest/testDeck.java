@@ -8,7 +8,6 @@
 package jUnitTest;
 
 import static org.junit.Assert.*;
-import model.Card;
 import model.Deck;
 
 import org.junit.Test;
@@ -20,7 +19,7 @@ public class testDeck {
 		Deck deck = Deck.getInstance();
 		assertNotNull("not null" , deck);
 	}
-
+/*
 	@Test
 	public void testShuffle() {
 	//	fail("Not yet implemented");
@@ -35,7 +34,7 @@ public class testDeck {
 		/*
 		 * the test checks if the i-th card of the origin deck and the shuffled one are similar
 		 * and stops when it finds the first match
-		 */
+		 *
 	
 		for(int i=0 ; i<52 ; i++){
 			String s = i + "";
@@ -45,7 +44,7 @@ public class testDeck {
 		
 		
 	}
-
+*/
 	@Test
 	public void testReturnCard() {
 		Deck deck = Deck.getInstance();

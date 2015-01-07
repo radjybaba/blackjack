@@ -30,11 +30,17 @@ public class test2 {
 		Card temp;
 		Hand hand = new Hand();
 		
+		Dealer dealer = new Dealer();
 		
 		//cards.returnCard(5).toString();
 		
-
-		
+		Card c1 = new Card(11,1);
+		Card c2 = new Card(12,2);
+		Card c3 = new Card(1 ,3);
+		dealer.getCard(c1);
+		dealer.getCard(c2);
+		dealer.getCard(c3);
+		System.err.println(dealer.getCurrentScore());
 		
 	//	cards.shuffle();
 		
