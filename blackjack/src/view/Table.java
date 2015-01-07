@@ -49,8 +49,6 @@ public class Table extends javax.swing.JFrame {
 
 	private final ArrayList<JLabel> playerHand;     // Player's hand- the cards
 	private final ArrayList<JLabel> dealerHand;     // Dealer's hand- the cards
-	// private final ArrayList<JLabel> totalScore;     // total score of all the rounds
-	//   private final ArrayList<JLabel> CurrentScore;   // current hand score (cards sum)
 
 	private int playerCards;
 	private int dealerCards;
