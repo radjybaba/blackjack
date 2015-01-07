@@ -538,13 +538,13 @@ public class Table extends javax.swing.JFrame {
 	 * the dealer's cards animation function
 	 */
 	private void dealerAnimation(){
-		// takes 1200 ms
+		// takes 1000 ms
 
 		JLabel temp = animated;
 		animated.setBounds(930, 40, 60, 87);
 		animated.setVisible(true);
 		AnimationClass ac = new AnimationClass();
-		ac.jLabelXLeft(930,620 , 20, 5, temp);   
+		ac.jLabelXLeft(930,620 , 20, 10, temp);   
 		ac.jLabelYDown(40,160 , 20, 2, temp);
 	}
 
