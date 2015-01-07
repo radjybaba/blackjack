@@ -51,44 +51,7 @@ public class MainClass {
 		controller = ControllerLogic.getInstance();
 		controller.toString();
             
-            /*
-             * serializable 
-             * 
-            String[] str1 = {};
-            try
-            { 
-            //	String str = "Amtpm";
-            //	String[] str1 = {"Geryes","Moussa"};
-            
-               FileOutputStream fileOut = new FileOutputStream("./employee.ser");
-               ObjectOutputStream out = new ObjectOutputStream(fileOut);
-               out.writeObject(str1);
-               out.close();
-               fileOut.close();
-               System.out.println("Serialized data is saved in /tmp/employee.ser");
-               
-            	
-            	FileInputStream fileIn = new FileInputStream("./employee.ser");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                try {
-					str1 = (String[]) in.readObject();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-                in.close();
-                fileIn.close(); 
-            }catch(IOException i)
-            {
-                i.printStackTrace();
-            }
-            System.err.println(str1.toString());
-            */
-            
-            
-           // System.out.println("dealer score is: " + controller.getDealerCurrentScore() + " player score is: " + controller.getPlayerCurrentScore());
-            
-            
+         
             
             
 
